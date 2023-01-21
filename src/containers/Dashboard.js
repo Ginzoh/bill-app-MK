@@ -154,8 +154,6 @@ export default class {
       $(`#status-bills-container${this.index}`).html("");
       this.counter++;
     }
-    console.log(bills);
-    console.log(index);
     bills.forEach((bill) => {
       switch (index) {
         case 1:
