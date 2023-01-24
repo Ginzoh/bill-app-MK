@@ -115,6 +115,7 @@ describe("Given I am connected as an employee", () => {
     });
   });
 });
+//test d'intégration GET
 
 describe("Given I am a user connected as User", () => {
   describe("When I navigate to the homepage", () => {
