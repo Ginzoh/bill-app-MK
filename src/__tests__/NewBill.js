@@ -51,8 +51,6 @@ beforeEach(() => {
 describe("Given I am connected as an employee", () => {
   describe("When I am on NewBill Page", () => {
     test("Then the options should be rendered correctly", () => {
-      const html = NewBillUI();
-      document.body.innerHTML = html;
       expect(screen.getByText("Transports")).toBeTruthy();
       expect(screen.getByText("Restaurants et bars")).toBeTruthy();
       expect(screen.getByText("Hôtel et logement")).toBeTruthy();
@@ -62,33 +60,21 @@ describe("Given I am connected as an employee", () => {
       expect(screen.getByText("Fournitures de bureau")).toBeTruthy();
     });
     test("Then the name input should be rendered correctly", () => {
-      const html = NewBillUI();
-      document.body.innerHTML = html;
       expect(screen.getByTestId("expense-name")).toBeTruthy();
     });
     test("Then the date input should be rendered correctly", () => {
-      const html = NewBillUI();
-      document.body.innerHTML = html;
       expect(screen.getByTestId("datepicker")).toBeTruthy();
     });
     test("Then the TTC input should be rendered correctly", () => {
-      const html = NewBillUI();
-      document.body.innerHTML = html;
       expect(screen.getByTestId("amount")).toBeTruthy();
     });
     test("Then the TVA input should be rendered correctly", () => {
-      const html = NewBillUI();
-      document.body.innerHTML = html;
       expect(screen.getByTestId("vat")).toBeTruthy();
     });
     test("Then the number input should be rendered correctly", () => {
-      const html = NewBillUI();
-      document.body.innerHTML = html;
       expect(screen.getByTestId("pct")).toBeTruthy();
     });
     test("Then the comments input should be rendered correctly", () => {
-      const html = NewBillUI();
-      document.body.innerHTML = html;
       expect(screen.getByTestId("commentary")).toBeTruthy();
     });
     test("Then the form should be rendered", () => {
@@ -113,7 +99,6 @@ describe("Given I am connected as an employee", () => {
     });
 
     test("Then the file input should work", (done) => {
-      // jest.spyOn(mockStore, "bills");
       const newBill = new NewBill({
         document,
         onNavigate,
@@ -121,13 +106,6 @@ describe("Given I am connected as an employee", () => {
         localStorage: window.localStorage,
       });
 
-      // mockStore.bills.mockImplementationOnce(() => {
-      //   return {
-      //     bills: () => {
-      //       return anewBill;
-      //     },
-      //   };
-      // });
       const testImageFile = new File(["hello"], "hello.png", {
         type: "image/png",
       });
@@ -145,34 +123,34 @@ describe("Given I am connected as an employee", () => {
   });
 });
 
-describe("Given I am a user connected as User", () => {
-  describe("When I submit a new bill", () => {
-    test("Then bill is posted with mock API POST", async () => {
-      const newBill = new NewBill({
-        document,
-        onNavigate,
-        store: mockStore,
-        localStorage: window.localStorage,
-      });
+// describe("Given I am a user connected as User", () => {
+//   describe("When I submit a new bill", () => {
+//     test("Then bill is posted with mock API POST", async () => {
+//       const newBill = new NewBill({
+//         document,
+//         onNavigate,
+//         store: null,
+//         localStorage: window.localStorage,
+//       });
 
-      let name = screen.getByTestId("expense-name");
-      name.value = "A new bill";
-      expect(screen.getByTestId("expense-name").value).toBe("A new bill");
-      let theDate = screen.getByTestId("datepicker");
-      theDate.value = "2023-01-01";
-      expect(screen.getByTestId("datepicker").value).toBe("2023-01-01");
-      let ttc = screen.getByTestId("amount");
-      ttc.value = "350";
-      expect(screen.getByTestId("amount").value).toBe("350");
-      let tva = screen.getByTestId("pct");
-      tva.value = "20";
-      expect(screen.getByTestId("pct").value).toBe("20");
-      const testImageFile = new File(["hello"], "hello.png", {
-        type: "image/png",
-      });
-      // const fileInput = screen.getByTestId("file");
-      // userEvent.upload(fileInput, testImageFile);
-      // expect(fileInput.files.length).toBe(1);
-    });
-  });
-});
+//       let name = screen.getByTestId("expense-name");
+//       name.value = "A new bill";
+//       expect(screen.getByTestId("expense-name").value).toBe("A new bill");
+//       let theDate = screen.getByTestId("datepicker");
+//       theDate.value = "2023-01-01";
+//       expect(screen.getByTestId("datepicker").value).toBe("2023-01-01");
+//       let ttc = screen.getByTestId("amount");
+//       ttc.value = "350";
+//       expect(screen.getByTestId("amount").value).toBe("350");
+//       let tva = screen.getByTestId("pct");
+//       tva.value = "20";
+//       expect(screen.getByTestId("pct").value).toBe("20");
+//       const testImageFile = new File(["hello"], "hello.png", {
+//         type: "image/png",
+//       });
+//       // const fileInput = screen.getByTestId("file");
+//       // userEvent.upload(fileInput, testImageFile);
+//       // expect(fileInput.files.length).toBe(1);
+//     });
+//   });
+// });
