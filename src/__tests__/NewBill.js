@@ -16,23 +16,6 @@ import store from "../app/Store.js";
 
 jest.mock("../app/store", () => mockStore);
 
-const anewBill = {
-  id: "47qAXb6fIm2zOKkLzMro",
-  vat: "80",
-  fileUrl:
-    "https://test.storage.tld/v0/b/billable-677b6.a…f-1.jpg?alt=media&token=c1640e12-a24b-4b11-ae52-529112e9602a",
-  status: "accepted",
-  type: "Hôtel et logement",
-  commentAdmin: "ok",
-  commentary: "séminaire billed",
-  name: "encore",
-  fileName: "preview-facture-free-201801-pdf-1.jpg",
-  date: "2004-04-04",
-  amount: 400,
-  email: "a@a",
-  pct: 20,
-};
-
 const onNavigate = (pathname) => {
   document.body.innerHTML = ROUTES({ pathname });
 };
@@ -122,35 +105,3 @@ describe("Given I am connected as an employee", () => {
     });
   });
 });
-
-// describe("Given I am a user connected as User", () => {
-//   describe("When I submit a new bill", () => {
-//     test("Then bill is posted with mock API POST", async () => {
-//       const newBill = new NewBill({
-//         document,
-//         onNavigate,
-//         store: null,
-//         localStorage: window.localStorage,
-//       });
-
-//       let name = screen.getByTestId("expense-name");
-//       name.value = "A new bill";
-//       expect(screen.getByTestId("expense-name").value).toBe("A new bill");
-//       let theDate = screen.getByTestId("datepicker");
-//       theDate.value = "2023-01-01";
-//       expect(screen.getByTestId("datepicker").value).toBe("2023-01-01");
-//       let ttc = screen.getByTestId("amount");
-//       ttc.value = "350";
-//       expect(screen.getByTestId("amount").value).toBe("350");
-//       let tva = screen.getByTestId("pct");
-//       tva.value = "20";
-//       expect(screen.getByTestId("pct").value).toBe("20");
-//       const testImageFile = new File(["hello"], "hello.png", {
-//         type: "image/png",
-//       });
-//       // const fileInput = screen.getByTestId("file");
-//       // userEvent.upload(fileInput, testImageFile);
-//       // expect(fileInput.files.length).toBe(1);
-//     });
-//   });
-// });
