@@ -2,17 +2,12 @@
  * @jest-environment jsdom
  */
 
-import { fireEvent, getByTestId, screen } from "@testing-library/dom";
+import { fireEvent, screen } from "@testing-library/dom";
 import NewBillUI from "../views/NewBillUI.js";
 import NewBill from "../containers/NewBill.js";
-import { ROUTES_PATH, ROUTES } from "../constants/routes.js";
-import userEvent from "@testing-library/user-event";
+import { ROUTES } from "../constants/routes.js";
 import { localStorageMock } from "../__mocks__/localStorage.js";
-import { bills } from "../fixtures/bills";
 import mockStore from "../__mocks__/store";
-import BillsUI from "../views/BillsUI";
-import { async } from "regenerator-runtime";
-import store from "../app/Store.js";
 
 jest.mock("../app/store", () => mockStore);
 
