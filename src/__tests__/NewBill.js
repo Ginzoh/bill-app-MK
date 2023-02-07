@@ -104,4 +104,52 @@ describe("Given I am connected as an employee", () => {
       expect(handleClickFile).toHaveBeenCalled();
     });
   });
+  describe("When I create a new bill", () => {
+    test("Then posts bill with mock API POST", async () => {
+      const newBill = new NewBill({
+        document,
+        onNavigate,
+        store: mockStore,
+        localStorage: window.localStorage,
+      });
+      const myForm = screen.getByTestId("form-new-bill");
+      const updating = jest.spyOn(mockStore.bills(), "update");
+      fireEvent.submit(myForm);
+      expect(updating).toHaveBeenCalled();
+    });
+    test("Then posts bill with mock API POST and fails with error 404", async () => {
+      const newBill = new NewBill({
+        document,
+        onNavigate,
+        store: mockStore,
+        localStorage: window.localStorage,
+      });
+      const myForm = screen.getByTestId("form-new-bill");
+      jest
+        .spyOn(mockStore.bills(), "update")
+        .mockRejectedValueOnce(new Error("Error 404"));
+      try {
+        fireEvent.submit(myForm);
+      } catch (error) {
+        expect(error.message).toBe("Error 404");
+      }
+    });
+    test("Then posts bill with mock API POST and fails with error 500", async () => {
+      const newBill = new NewBill({
+        document,
+        onNavigate,
+        store: mockStore,
+        localStorage: window.localStorage,
+      });
+      const myForm = screen.getByTestId("form-new-bill");
+      jest
+        .spyOn(mockStore.bills(), "update")
+        .mockRejectedValueOnce(new Error("Error 500"));
+      try {
+        fireEvent.submit(myForm);
+      } catch (error) {
+        expect(error.message).toBe("Error 500");
+      }
+    });
+  });
 });
